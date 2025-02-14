@@ -150,6 +150,80 @@ int main() {
 
 ---
 
+**Dynamic Memory Allocation in C++**
+
+### **Introduction**
+Memory management is a crucial aspect of programming, particularly in languages like C++ that provide both automatic and manual memory management options. While automatic memory allocation occurs on the stack, dynamic memory allocation allows programs to request memory from the heap at runtime. This feature is especially useful when the amount of memory required is not known at compile time.
+
+### **Understanding Memory Allocation**
+In C++, memory is divided into different sections:
+1. **Stack**: Used for local variables and function calls; managed automatically by the compiler.
+2. **Heap**: Used for dynamically allocated memory; managed manually by the programmer.
+
+Dynamic memory allocation enables efficient memory usage and flexibility in handling data structures like arrays, linked lists, and trees.
+
+### **Dynamic Memory Allocation Using `new` and `delete`**
+C++ provides the `new` and `delete` operators to allocate and deallocate memory dynamically:
+- `new`: Allocates memory on the heap and returns a pointer to the allocated memory.
+- `delete`: Frees the allocated memory, preventing memory leaks.
+
+#### **Example: Allocating Memory for a Single Variable**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* ptr = new int; // Allocates memory for an integer
+    *ptr = 10; // Assigns value
+    cout << "Value: " << *ptr << endl;
+    delete ptr; // Frees allocated memory
+    return 0;
+}
+```
+
+### **Dynamic Allocation for Arrays**
+To allocate memory for arrays dynamically, the syntax is:
+```cpp
+int* arr = new int[5]; // Allocates an array of 5 integers
+```
+
+After using the array, memory should be freed using:
+```cpp
+delete[] arr;
+```
+Example:
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int* arr = new int[5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = i * 10;
+    }
+    for (int i = 0; i < 5; i++) {
+        cout << arr[i] << " ";
+    }
+    delete[] arr; // Deallocating memory
+    return 0;
+}
+```
+
+### **Advantages of Dynamic Memory Allocation**
+1. **Efficient Use of Memory**: Allocates only the required memory, reducing wastage.
+2. **Flexibility**: Enables handling of variable-sized data structures.
+3. **Prevents Stack Overflow**: Large objects can be stored in heap memory instead of consuming stack space.
+
+### **Potential Issues and Solutions**
+1. **Memory Leaks**: Occur when allocated memory is not deallocated properly. Always use `delete` or `delete[]` when memory is no longer needed.
+2. **Dangling Pointers**: A pointer that still points to deallocated memory. Solution: Set pointers to `nullptr` after deletion.
+3. **Fragmentation**: Multiple small allocations may lead to inefficient memory usage. Solution: Optimize allocation and deallocation patterns.
+
+### **Conclusion**
+Dynamic memory allocation in C++ is a powerful tool for managing memory efficiently. By using `new` and `delete`, programmers can allocate and deallocate memory as needed. However, proper memory management is essential to avoid issues such as memory leaks and dangling pointers. Understanding these concepts ensures efficient and error-free programming, making C++ a robust language for system and application development.
+
+
+
 ### **Key Takeaways**
 
 - **Pointers store addresses** of other variables.
