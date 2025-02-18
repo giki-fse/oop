@@ -193,17 +193,17 @@ int main() {
 }
 ```
 
-### **Advantages of Dynamic Memory Allocation**
+#### **Advantages of Dynamic Memory Allocation**
 1. **Efficient Use of Memory**: Allocates only the required memory, reducing wastage.
 2. **Flexibility**: Enables handling of variable-sized data structures.
 3. **Prevents Stack Overflow**: Large objects can be stored in heap memory instead of consuming stack space.
 
-### **Potential Issues and Solutions**
+#### **Potential Issues and Solutions**
 1. **Memory Leaks**: Occur when allocated memory is not deallocated properly. Always use `delete` or `delete[]` when memory is no longer needed.
 2. **Dangling Pointers**: A pointer that still points to deallocated memory. Solution: Set pointers to `nullptr` after deletion.
 3. **Fragmentation**: Multiple small allocations may lead to inefficient memory usage. Solution: Optimize allocation and deallocation patterns.
 
-### **Conclusion**
+#### **Conclusion**
 Dynamic memory allocation in C++ is a powerful tool for managing memory efficiently. By using `new` and `delete`, programmers can allocate and deallocate memory as needed. However, proper memory management is essential to avoid issues such as memory leaks and dangling pointers. Understanding these concepts ensures efficient and error-free programming, making C++ a robust language for system and application development.
 
 ---
