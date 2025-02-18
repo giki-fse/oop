@@ -234,13 +234,7 @@ Dynamic memory allocation in C++ is a powerful tool for managing memory efficien
 
 ## Lab 4: Pointers - II & Bitwise operators and Bit Fields
 
-### Pointer Functions in C++
-
-#### Introduction
-
-This lab explores the concept of pointer functions in C++. Pointer functions are powerful tools that allow you to pass functions as arguments to other functions, return functions from functions, and store function addresses for later invocation.  This enhances code flexibility and modularity.
-
-#### Objectives
+### Objectives
 
 After completing this lab, you should be able to:
 *   Understand and use the common bitwise operators: AND (`&`), OR (`|`), XOR (`^`), NOT (`~`), left shift (`<<`), and right shift (`>>`).
@@ -254,6 +248,12 @@ After completing this lab, you should be able to:
 *   Return pointer functions from functions.
 *   Use function pointers to invoke functions indirectly.
 
+### Pointer Functions in C++
+
+#### Introduction
+
+Pointer functions are powerful tools that allow you to pass functions as arguments to other functions, return functions from functions, and store function addresses for later invocation.  This enhances code flexibility and modularity.
+
 #### Background
 
 A function pointer stores the memory address of a function.  This address can then be used to call the function indirectly.  The declaration of a function pointer must match the signature (return type and parameter types) of the function it will point to.
@@ -262,7 +262,7 @@ A function pointer stores the memory address of a function.  This address can th
 #### Exercise 1: Basic Function Pointer
 
 1.  **Code:**
-
+```cpp
 #include <iostream>
 
 int add(int a, int b) {
@@ -275,6 +275,7 @@ int main() {
     std::cout << "Result: " << result << std::endl; // Output: Result: 8
     return 0;
 }
+```
 
 2.  **Explanation:**
     *   `int (*funcPtr)(int, int);` declares `funcPtr` as a pointer to a function that takes two integers and returns an integer.  The parentheses around `*funcPtr` are crucial.
@@ -285,6 +286,7 @@ int main() {
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 int operate(int a, int b, int (*operation)(int, int)) {
@@ -301,6 +303,7 @@ int main() {
     std::cout << "Result 2: " << result2 << std::endl; // Output: Result 2: 15
     return 0;
 }
+```
 
 2.  **Explanation:**
     *   The `operate` function takes a function pointer as an argument.
@@ -310,6 +313,7 @@ int main() {
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 int add(int a, int b) { return a + b; }
@@ -323,6 +327,7 @@ int main() {
     }
     return 0;
 }
+```
 
 2.  **Explanation:** An array of function pointers is created, allowing you to store and access multiple functions through the array.
 
@@ -330,6 +335,7 @@ int main() {
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 int add(int a, int b) { return a + b; }
@@ -353,6 +359,7 @@ int main() {
     }
     return 0;
 }
+```
 
 2.  **Explanation:** The `getOperation` function returns a function pointer based on the input character.
 
@@ -380,6 +387,7 @@ Bitwise operators work directly on the binary representation of data.  They are 
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 int main() {
@@ -389,13 +397,14 @@ int main() {
     std::cout << "Result: " << result << std::endl; // Output: Result: 2
     return 0;
 }
+```
 
 2.  **Explanation:** The AND operator sets a bit in the result only if the corresponding bits in both operands are set.
 
 #### Exercise 2: Bitwise OR (`|`)
 
 1.  **Code:**
-
+```cpp
 #include <iostream>
 
 int main() {
@@ -405,13 +414,14 @@ int main() {
     std::cout << "Result: " << result << std::endl; // Output: Result: 14
     return 0;
 }
+```
 
 2.  **Explanation:** The OR operator sets a bit in the result if at least one of the corresponding bits in the operands is set.
 
 #### Exercise 3: Bitwise XOR (`^`)
 
 1.  **Code:**
-
+```cpp
 #include <iostream>
 
 int main() {
@@ -421,6 +431,7 @@ int main() {
     std::cout << "Result: " << result << std::endl; // Output: Result: 12
     return 0;
 }
+```
 
 2.  **Explanation:** The XOR operator sets a bit in the result if the corresponding bits in the operands are different.
 
@@ -428,6 +439,7 @@ int main() {
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 int main() {
@@ -436,6 +448,7 @@ int main() {
     std::cout << "Result: " << result << std::endl; // Output: Result: -11 (or similar)
     return 0;
 }
+```
 
 2.  **Explanation:** The NOT operator inverts all the bits of the operand.  The result is implementation-dependent due to how negative numbers are represented.
 
@@ -443,6 +456,7 @@ int main() {
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 int main() {
@@ -451,6 +465,7 @@ int main() {
     std::cout << "Result: " << result << std::endl; // Output: Result: 40
     return 0;
 }
+```
 
 2.  **Explanation:** The left shift operator shifts the bits of the operand to the left by the specified number of positions.  This effectively multiplies the value by 2 raised to the power of the shift amount.
 
@@ -458,6 +473,7 @@ int main() {
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 int main() {
@@ -466,6 +482,7 @@ int main() {
     std::cout << "Result: " << result << std::endl; // Output: Result: 2
     return 0;
 }
+```
 
 2.  **Explanation:** The right shift operator shifts the bits of the operand to the right by the specified number of positions.  This effectively divides the value by 2 raised to the power of the shift amount.  Be aware of the difference between arithmetic and logical right shifts (the behavior depends on whether the most significant bit is replicated or filled with 0s).
 
@@ -473,6 +490,7 @@ int main() {
 
 1.  **Code:**
 
+```cpp
 #include <iostream>
 
 struct Flags {
@@ -491,6 +509,7 @@ int main() {
     std::cout << "Error Code: " << flags.errorCode << std::endl; // Output: Error Code: 5
     return 0;
 }
+```
 
 2.  **Explanation:**  The `Flags` structure uses bit fields to define members with specific bit widths.  This allows you to pack multiple small values into a single storage unit.
 
@@ -507,6 +526,3 @@ Bitwise operators and bit fields are essential tools for low-level programming a
 *   Practice using bitwise operations to implement encryption algorithms.
 *   Research the impact of compiler optimizations on bit field layout.
 *   Consider the use of `std::bitset` for working with fixed-size bit sequences.
-
-
-
