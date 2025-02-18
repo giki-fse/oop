@@ -17,7 +17,7 @@ To understand and implement the concepts of pointers in C++, including pointer a
 
 A pointer is a variable that stores the memory address of another variable. Pointers are essential for dynamic memory allocation, efficient array manipulation, and passing arguments by reference to functions.
 
-## Basic Pointer Declaration and Dereferencing
+### Basic Pointer Declaration and Dereferencing
 
 
 
@@ -36,10 +36,10 @@ Dereferencing a pointer means accessing the value stored at the memory address i
 ```cpp
 cout << "Value of a: " << *ptr << endl; // Output: Value of a: 10
 ```
-### **Aim:**
+#### **Aim:**
 To declare a pointer, store the address of a variable, and access the value using the pointer.
 
-### **Code:**
+#### **Code:**
 ```cpp
 #include <iostream>
 using namespace std;
@@ -57,7 +57,7 @@ int main() {
 }
 ```
 
-### **Expected Output:**
+#### **Expected Output:**
 ```
 Value of a: 10
 Address of a: 0x61ff08  (example address)
@@ -67,12 +67,12 @@ Value at ptr: 10
 
 ---
 
-## **Pointer Arithmetic**
+### **Pointer Arithmetic**
 
-### **Aim:**
+#### **Aim:**
 To demonstrate pointer arithmetic operations like increment and decrement.
 
-### **Code:**
+#### **Code:**
 ```cpp
 #include <iostream>
 using namespace std;
@@ -91,7 +91,7 @@ int main() {
 }
 ```
 
-### **Expected Output:**
+#### **Expected Output:**
 ```
 First element: 10
 Second element: 20
@@ -100,12 +100,12 @@ Third element: 30
 
 ---
 
-## **Pointer to a Structure**
+### **Pointer to a Structure**
 
-### **Aim:**
+#### **Aim:**
 To create a structure and access its members using pointers.
 
-### **Code:**
+#### **Code:**
 ```cpp
 #include <iostream>
 using namespace std;
@@ -126,7 +126,7 @@ int main() {
 }
 ```
 
-### **Expected Output:**
+#### **Expected Output:**
 ```
 Student Name: John
 Student Age: 20
@@ -134,24 +134,24 @@ Student Age: 20
 
 ---
 
-**Dynamic Memory Allocation in C++**
+### **Dynamic Memory Allocation in C++**
 
-### **Introduction**
+#### **Introduction**
 Memory management is a crucial aspect of programming, particularly in languages like C++ that provide both automatic and manual memory management options. While automatic memory allocation occurs on the stack, dynamic memory allocation allows programs to request memory from the heap at runtime. This feature is especially useful when the amount of memory required is not known at compile time.
 
-### **Understanding Memory Allocation**
+#### **Understanding Memory Allocation**
 In C++, memory is divided into different sections:
 1. **Stack**: Used for local variables and function calls; managed automatically by the compiler.
 2. **Heap**: Used for dynamically allocated memory; managed manually by the programmer.
 
 Dynamic memory allocation enables efficient memory usage and flexibility in handling data structures like arrays, linked lists, and trees.
 
-### **Dynamic Memory Allocation Using `new` and `delete`**
+#### **Dynamic Memory Allocation Using `new` and `delete`**
 C++ provides the `new` and `delete` operators to allocate and deallocate memory dynamically:
 - `new`: Allocates memory on the heap and returns a pointer to the allocated memory.
 - `delete`: Frees the allocated memory, preventing memory leaks.
 
-#### **Example: Allocating Memory for a Single Variable**
+##### **Example: Allocating Memory for a Single Variable**
 ```cpp
 #include <iostream>
 using namespace std;
@@ -165,7 +165,7 @@ int main() {
 }
 ```
 
-### **Dynamic Allocation for Arrays**
+#### **Dynamic Allocation for Arrays**
 To allocate memory for arrays dynamically, the syntax is:
 ```cpp
 int* arr = new int[5]; // Allocates an array of 5 integers
