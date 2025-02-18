@@ -17,13 +17,6 @@ To understand and implement the concepts of pointers in C++, including pointer a
 
 A pointer is a variable that stores the memory address of another variable. Pointers are essential for dynamic memory allocation, efficient array manipulation, and passing arguments by reference to functions.
 
-# Lab Manual: Pointers in C++
-
-## Objective:
-To understand and implement the concepts of pointers in C++ including pointer declaration, dereferencing, pointer arithmetic, and dynamic memory allocation.
-
----
-
 ## Basic Pointer Declaration and Dereferencing
 
 
