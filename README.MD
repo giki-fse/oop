@@ -513,7 +513,7 @@ int main() {
 
 Bitwise operators and bit fields are essential tools for low-level programming and optimization.  Understanding how to use them effectively allows you to manipulate data at the bit level, which is crucial for many applications.
 
-## Lab 5: Preprocessors & Class-I
+## Lab 5: Preprocessors
 
 **Objective:** To understand and effectively use C++ preprocessors for code manipulation, conditional compilation, and macro definitions.
 
