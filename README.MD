@@ -512,3 +512,152 @@ int main() {
 #### Conclusion
 
 Bitwise operators and bit fields are essential tools for low-level programming and optimization.  Understanding how to use them effectively allows you to manipulate data at the bit level, which is crucial for many applications.
+
+## Lab 5: Preprocessors
+
+**Objective:** To understand and effectively use C++ preprocessors for code manipulation, conditional compilation, and macro definitions.
+
+### Preprocessors Introduction:
+
+The C++ preprocessor is a powerful tool that operates on your source code *before* it's compiled.  It's responsible for tasks like:
+
+* Macro substitution: Replacing symbolic names with their values.
+* File inclusion: Bringing in the contents of other files.
+* Conditional compilation: Compiling specific code blocks based on conditions.
+
+Preprocessor directives always start with a `#`.
+
+### 1. Macro Definitions (#define):**
+
+Macros are used to define constants, functions (though inline functions are often preferred now), or code snippets.
+
+#### **Examples:**
+```cpp
+#include <iostream>
+
+// Defining a constant macro
+#define PI 3.14159
+
+// Defining a function-like macro (use with caution, can have unexpected side effects)
+#define SQUARE(x) ((x) * (x)) // Parentheses are crucial!
+
+// Defining a multi-line macro
+#define PRINT_HELLO_WORLD() \
+    std::cout << "Hello, World!" << std::endl; \
+    std::cout << "This is a test." << std::endl;
+
+int main() {
+    double radius = 5.0;
+    double area = PI * SQUARE(radius);  // Macro substitution happens here
+
+    std::cout << "Area: " << area << std::endl;
+
+    PRINT_HELLO_WORLD();
+
+    return 0;
+}
+```
+
+**Explanation:**
+
+* `#define PI 3.14159`:  Replaces all occurrences of `PI` with `3.14159` before compilation.
+* `#define SQUARE(x) ((x) * (x))`: Defines a macro for squaring a number.  The extra parentheses are *extremely* important to avoid operator precedence issues.  `SQUARE(a+b)` would become `((a+b) * (a+b))` with the parentheses, but `(a+b * a+b)` without, leading to incorrect results.
+* `#define PRINT_HELLO_WORLD()`:  A multi-line macro. The backslashes `\` at the end of each line are essential for indicating that the macro definition continues on the next line.
+
+### **2. File Inclusion (#include):**
+
+The `#include` directive is used to include the contents of other files, typically header files (`.h` or `.hpp`).
+
+**Examples:**
+
+```cpp
+#include <iostream> // Standard input/output library
+#include <string>   // String manipulation library
+#include "my_header.h" // User-defined header file (in the same directory)
+#include "include/another_header.h" // User-defined header file in a subdirectory
+
+int main() {
+    std::cout << "Hello from main!" << std::endl;
+    // ... use functions/classes from included headers ...
+    return 0;
+}
+```
+
+**Explanation:**
+
+* `#include <iostream>`: Includes the `iostream` header file from the standard library.  Angle brackets `<>` are used for standard library headers.
+* `#include "my_header.h"`: Includes a user-defined header file. Double quotes `""` are used for user-defined headers.  The compiler searches for these in the current directory (or directories specified by compiler flags).
+
+### **3. Conditional Compilation (#if, #elif, #else, #endif, #ifdef, #ifndef):**
+
+Conditional compilation allows you to include or exclude code blocks based on certain conditions. This is useful for:
+
+* Platform-specific code: Compiling different code for Windows, macOS, or Linux.
+* Debugging: Including debugging code only when needed.
+* Feature toggles: Enabling or disabling features at compile time.
+
+**Examples:**
+
+```cpp
+#include <iostream>
+
+#define DEBUG // Define DEBUG to enable debugging code
+
+int main() {
+    #ifdef DEBUG
+        std::cout << "Debugging enabled." << std::endl;
+        int x = 10;
+        std::cout << "Value of x: " << x << std::endl;
+    #endif
+
+    #ifndef RELEASE // If RELEASE is NOT defined
+        std::cout << "This is a development build." << std::endl;
+    #else
+        std::cout << "This is a release build." << std::endl;
+    #endif
+
+    #if defined(_WIN32) || defined(_WIN64) // Windows-specific code
+        std::cout << "Running on Windows." << std::endl;
+    #elif defined(__linux__) // Linux-specific code
+        std::cout << "Running on Linux." << std::endl;
+    #else
+        std::cout << "Running on an unknown platform." << std::endl;
+    #endif
+
+
+    return 0;
+}
+```
+
+**Explanation:**
+
+* `#ifdef DEBUG`: Checks if the macro `DEBUG` is defined.  The code within the `#ifdef` and `#endif` block is only compiled if `DEBUG` is defined.
+* `#ifndef RELEASE`: Checks if the macro `RELEASE` is *not* defined.
+* `#if defined(_WIN32) || defined(_WIN64)`: Checks if either `_WIN32` or `_WIN64` is defined (these are often predefined by Windows compilers).  You can use logical operators (`&&`, `||`, `!`) in `#if` conditions.
+* `#elif`:  Short for "else if," allows you to check multiple conditions.
+* `#else`: Provides a default case if none of the preceding conditions are met.
+* `#endif`: Marks the end of a conditional compilation block.
+
+### **4. Other Preprocessor Directives:**
+
+* `#undef`: Undefines a previously defined macro.  `#undef PI` would remove the definition of the `PI` macro.
+* `#pragma`: Compiler-specific directives that can be used for various purposes (e.g., controlling warnings, optimizing code).  These are not standardized, so their behavior can vary between compilers.  Example: `#pragma once` (often used in header files to prevent multiple inclusions).
+* `#error`:  Generates a compiler error message.  `#error "This feature is not yet implemented."`
+
+**Best Practices:**
+
+* Use meaningful names for macros.
+* Parenthesize macro arguments to avoid unexpected behavior.
+* Avoid overly complex macros; they can make code harder to read and debug.
+* Prefer `const` for constant values and `inline` functions for simple functions when possible – they offer type safety and better integration with the compiler.
+* Use conditional compilation judiciously.
+* Document your macros and preprocessor directives clearly.
+
+### **Exercises:**
+
+1. Create a macro to calculate the volume of a cylinder.
+2. Use conditional compilation to compile different code blocks for different operating systems (e.g., Windows, Linux, macOS).
+3. Create a header file with macro definitions and include it in your main program.
+4. Experiment with `#pragma once` to prevent multiple inclusions of a header file.
+5. Use `#error` to halt compilation if a required condition is not met.
+
