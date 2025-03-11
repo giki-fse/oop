@@ -10,9 +10,13 @@ winget install --id BrechtSanders.WinLibs.POSIX.UCRT --version 14.2.0-12.0.0-r2
 
 ```
 
-reopen your terminal window
-
 open vscode and open a folder
+
+if vscode is not installed use the following command to install
+
+```
+winget install --id  Microsoft.VisualStudioCode
+```
 
 run the following command in terminal
 
