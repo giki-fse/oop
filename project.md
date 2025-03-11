@@ -5,6 +5,8 @@ winget install --id Git.Git
 
 Please enter the following command in powershell to install compiler
 
+If compiler already installed, please delete that
+
 ```
 winget install --id BrechtSanders.WinLibs.POSIX.UCRT --version 14.2.0-12.0.0-r2
 
